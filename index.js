@@ -6,7 +6,7 @@ const data = []
 
 app.use(express.json())
 app.get('/', (req, res) => {
-    res.send(data)
+    res.send('hello world!')
 })
 app.post('/', (req, res) => {
     data[data.length] = {
