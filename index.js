@@ -23,7 +23,7 @@ let subjects = [
 app.use(express.json())
 app.use(cors())
 app.get('/', (req, res) => {
-    res.send('JSON.stringify(data)')
+    res.send(JSON.stringify(data))
 })
 app.post('/', (req, res) => {
     subjects[subjects.length] = {
