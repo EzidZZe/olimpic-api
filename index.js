@@ -3,35 +3,31 @@ const cors = require('cors')
 
 const app = express()
 
-let subjects = [ 
-    {
-        id: 0,
-        name: 'Math',
-        tutor: 'Bobrova Tatyana',
-        classes: '8, 9, 10, 11',
-        date: '1 September 2024'
-    },
-    {
-        id: 1,
-        name: 'Russian',
-        tutor: 'Haritonova Anna',
-        classes: '8, 9, 10, 11',
-        date: '1 September 2024'
-    }
-]
-
+app.use(cors())
 app.use(express.json())
+
+const subjects = [{
+    id: 0,
+    name: 'Math',
+    classes: '8 - 11',
+    school: 'Kell',
+    date: '1 sep 2024',
+    register: 'http://123.com'
+},
+{
+    id: 0,
+    name: 'Russian',
+    classes: '1 - 4',
+    school: 'Kell',
+    date: '1 sep 2024',
+    register: 'http://456.com'
+}]
+
 app.get('/', (req, res) => {
-    res.send(JSON.stringify(data))
+    res.send('<h1>Hi in backend!</h1>')
 })
-app.post('/', (req, res) => {
-    subjects[subjects.length] = {
-        id: subjects.length,
-        tutor: req.body.tutor,
-        name: req.body.name,
-        classes: req.body.classes,
-        date: req.body.date
-    }
+app.get('/data', (req, res) => {
+    res.send(JSON.stringify(subjects))
 })
 
 app.listen(4000, () => console.log('Server started!'))
